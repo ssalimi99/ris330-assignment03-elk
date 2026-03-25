@@ -1,0 +1,90 @@
+RIS330 - Assignment 03 Report
+
+Cover Page
+- Student Name:
+- Student Number:
+- Assignment: Assignment 03 - ELK Stack and Logging
+- Course: RIS330
+- Date:
+
+Student Integrity Statement
+I confirm that this submission is my own work and follows the academic integrity policy.
+
+============================================================
+ELK Stack Running
+============================================================
+
+Screenshot 1:
+- Label: Elasticsearch running
+- Required evidence: systemctl active + endpoint check
+- Insert screenshot here
+
+Screenshot 2:
+- Label: Logstash running
+- Required evidence: systemctl active
+- Insert screenshot here
+
+Screenshot 3:
+- Label: Kibana running
+- Required evidence: browser page and/or API status
+- Insert screenshot here
+
+Screenshot 4:
+- Label: Filebeat running
+- Required evidence: systemctl active
+- Insert screenshot here
+
+============================================================
+Data Ingestion and Analysis
+============================================================
+
+Screenshot 5:
+- Label: Apache access/error logs prepared
+- Required evidence: log files in /var/log/apache2
+- Insert screenshot here
+
+Screenshot 6:
+- Label: Filebeat Apache module configured
+- Required evidence: apache module config and setup command output
+- Insert screenshot here
+
+Screenshot 7:
+- Label: Ingested document count
+- Required evidence: _cat/indices and _count output
+- Insert screenshot here
+
+Screenshot 8:
+- Label: Filebeat Apache dashboard in Kibana
+- Required evidence: dashboard visuals
+- Insert screenshot here
+
+Screenshot 9:
+- Label: Data in Kibana Discover
+- Required evidence: Apache logs visible and filter example
+- Insert screenshot here
+
+============================================================
+References
+============================================================
+
+List all installation/configuration sources used:
+1.
+2.
+3.
+
+============================================================
+Files Submitted
+============================================================
+
+- Report (.docx)
+- Changed configuration files (list below):
+  - elasticsearch.yml
+  - kibana.yml
+  - logstash-apache.conf
+  - filebeat.yml
+  - apache.yml (Filebeat module)
+
+Screenshot Compliance Check (must be present on every screenshot):
+- VM name: [yes/no]
+- Student number: [yes/no]
+- Current date/time: [yes/no]
