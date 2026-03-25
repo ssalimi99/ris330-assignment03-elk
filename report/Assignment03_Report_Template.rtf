@@ -14,84 +14,94 @@ Cover Page\
 - Date:\
 \
 Student Integrity Statement\
-I confirm that this submission is my own work and follows the academic integrity policy.\
+I confirm that this work is my own. I completed the installation, configuration,\
+and testing steps myself, and I followed Seneca's academic integrity policy.\
 \
 ============================================================\
 ELK Stack Running\
 ============================================================\
 \
-Screenshot 1:\
-- Label: Elasticsearch running\
-- Required evidence: systemctl active + endpoint check\
+Screenshot 1 - Elasticsearch running\
+- What I checked: service status and local API response\
+- Command(s): `systemctl status elasticsearch --no-pager` and `curl http://127.0.0.1:9200`\
+- My note: [Write 1 short sentence about what you observed]\
 - Insert screenshot here\
 \
-Screenshot 2:\
-- Label: Logstash running\
-- Required evidence: systemctl active\
+Screenshot 2 - Logstash running\
+- What I checked: service status\
+- Command: `systemctl status logstash --no-pager`\
+- My note: [Write 1 short sentence about startup/health]\
 - Insert screenshot here\
 \
-Screenshot 3:\
-- Label: Kibana running\
-- Required evidence: browser page and/or API status\
+Screenshot 3 - Kibana running\
+- What I checked: Kibana API status and browser page\
+- Command/Page: `curl http://127.0.0.1:5601/api/status` and Kibana in browser\
+- My note: [Write 1 short sentence about what loaded]\
 - Insert screenshot here\
 \
-Screenshot 4:\
-- Label: Filebeat running\
-- Required evidence: systemctl active\
+Screenshot 4 - Filebeat running\
+- What I checked: service status\
+- Command: `systemctl status filebeat --no-pager`\
+- My note: [Write 1 short sentence about output]\
 - Insert screenshot here\
 \
 ============================================================\
 Data Ingestion and Analysis\
 ============================================================\
 \
-Screenshot 5:\
-- Label: Apache access/error logs prepared\
-- Required evidence: log files in /var/log/apache2\
+Screenshot 5 - Apache sample logs prepared\
+- What I checked: access + error logs exist in `/var/log/apache2/`\
+- Command(s): `ls -l /var/log/apache2/` and line counts\
+- My note: [Example: access log had ___ lines, error log had ___ lines]\
 - Insert screenshot here\
 \
-Screenshot 6:\
-- Label: Filebeat Apache module configured\
-- Required evidence: apache module config and setup command output\
+Screenshot 6 - Filebeat Apache module configured\
+- What I checked: apache module enabled and setup completed\
+- Command(s): `filebeat modules list` and `filebeat setup -e`\
+- My note: [Write 1 short sentence]\
 - Insert screenshot here\
 \
-Screenshot 7:\
-- Label: Ingested document count\
-- Required evidence: _cat/indices and _count output\
+Screenshot 7 - Ingested document count\
+- What I checked: filebeat index + total count in Elasticsearch\
+- Command(s): `_cat/indices` and `_count` request\
+- My note: [Write the count and a short observation]\
 - Insert screenshot here\
 \
-Screenshot 8:\
-- Label: Filebeat Apache dashboard in Kibana\
-- Required evidence: dashboard visuals\
+Screenshot 8 - Kibana dashboard\
+- What I checked: Filebeat Apache dashboard visualizations\
+- Page: Kibana -> Dashboards -> Filebeat Apache Access and Error Logs\
+- My note: [Mention one useful chart you saw]\
 - Insert screenshot here\
 \
-Screenshot 9:\
-- Label: Data in Kibana Discover\
-- Required evidence: Apache logs visible and filter example\
+Screenshot 9 - Kibana Discover data\
+- What I checked: Apache logs searchable in Discover\
+- Page: Kibana -> Discover (with at least one filter)\
+- My note: [Mention one query/filter you tested]\
 - Insert screenshot here\
 \
 ============================================================\
 References\
 ============================================================\
 \
-List all installation/configuration sources used:\
-1.\
-2.\
-3.\
+I used these references for installation/troubleshooting:\
+1. https://www.elastic.co/\
+2. https://www.cherryservers.com/blog/install-elasticsearch-ubuntu\
+3. [Add any other source you used]\
 \
 ============================================================\
 Files Submitted\
 ============================================================\
 \
-- Report (.docx)\
-- Changed configuration files (list below):\
-  - elasticsearch.yml\
-  - kibana.yml\
-  - logstash-apache.conf\
-  - filebeat.yml\
-  - apache.yml (Filebeat module)\
+- Report file: `Assignment03_<YourName>.docx`\
+- Changed configuration files:\
+  - `/etc/elasticsearch/elasticsearch.yml`\
+  - `/etc/kibana/kibana.yml`\
+  - `/etc/logstash/conf.d/apache.conf`\
+  - `/etc/filebeat/filebeat.yml`\
+  - `/etc/filebeat/modules.d/apache.yml`\
 \
-Screenshot Compliance Check (must be present on every screenshot):\
-- VM name: [yes/no]\
-- Student number: [yes/no]\
-- Current date/time: [yes/no]\
+Screenshot Compliance Check (for every screenshot)\
+- VM name visible: [yes/no]\
+- Student number visible: [yes/no]\
+- Current date/time visible: [yes/no]\
 }

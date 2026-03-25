@@ -1,32 +1,33 @@
-# Assignment 03 Submission Checklist
+# Assignment 03 - Final Quick Check
 
-## Report content checklist
+Use this right before uploading so nothing gets missed.
 
-- [ ] Report is in `.docx` format
-- [ ] Cover page includes student name
-- [ ] Cover page includes assignment name and number
-- [ ] Cover page includes Student Integrity Statement
-- [ ] ELK Stack Running section has labeled screenshots
-- [ ] Data Ingestion and Analysis section has labeled screenshots
-- [ ] References section lists all external links used
+## Report content
 
-## Screenshot compliance checklist (each screenshot)
+- [ ] Report is saved as `.docx`
+- [ ] Cover page has name, student number, assignment title/number
+- [ ] Student Integrity Statement is included
+- [ ] ELK Stack Running section has screenshots + short notes
+- [ ] Data Ingestion and Analysis section has screenshots + short notes
+- [ ] References section lists links I actually used
 
-- [ ] VM name visible
-- [ ] Student number visible
-- [ ] Current date/time visible
+## Screenshot rules (every screenshot)
 
-## Technical evidence checklist
+- [ ] VM name is visible
+- [ ] Student number is visible
+- [ ] Current date/time is visible
 
-- [ ] Elasticsearch running
-- [ ] Logstash running
-- [ ] Kibana running
-- [ ] Filebeat running
-- [ ] Apache access + error logs ingested
-- [ ] Filebeat Apache dashboard populated
-- [ ] Log count verified
+## Technical proof included
 
-## Config files to submit with report
+- [ ] Elasticsearch is running
+- [ ] Logstash is running
+- [ ] Kibana is running
+- [ ] Filebeat is running
+- [ ] Apache access/error logs were ingested
+- [ ] Filebeat Apache dashboard is populated
+- [ ] Log count was verified
+
+## Config files to attach
 
 - [ ] `/etc/elasticsearch/elasticsearch.yml`
 - [ ] `/etc/kibana/kibana.yml`
