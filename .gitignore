@@ -3,3 +3,5 @@
 *.swo
 .idea/
 .vscode/
+# Microsoft Word lock files
+~$*.docx
