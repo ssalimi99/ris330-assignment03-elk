@@ -35,6 +35,15 @@ single-node classroom setup.
    - Open `report/Assignment03_Report_Template.docx`
    - Follow `submission/SUBMISSION_CHECKLIST.md`
 
+## If you downloaded ZIP and then ran `git init` / `git fetch`
+
+Link `main` to GitHub so `git pull` works:
+
+```bash
+git branch --set-upstream-to=origin/main main
+git pull
+```
+
 ## Important notes
 
 - **Run the ingest scripts in order:** fetch logs (`01`) *before* or together with Filebeat setup (`02`). If Filebeat was configured first, re-run `01` (it restarts Filebeat) or run `04_fix_zero_documents.sh`.

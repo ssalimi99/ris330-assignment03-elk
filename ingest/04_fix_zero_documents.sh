@@ -8,6 +8,8 @@ echo "3. Stale harvester state in the registry"
 echo
 
 echo "=== Permissions on /var/log/apache2 ==="
+# Path may not exist if the apache2 package was never installed (ZIP lab VMs often skip it).
+sudo mkdir -p /var/log/apache2
 sudo chmod 0755 /var/log/apache2
 if [[ -f /var/log/apache2/access.log ]]; then sudo chmod 0644 /var/log/apache2/access.log; fi
 if [[ -f /var/log/apache2/error.log ]]; then sudo chmod 0644 /var/log/apache2/error.log; fi
