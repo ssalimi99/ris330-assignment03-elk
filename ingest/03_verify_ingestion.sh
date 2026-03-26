@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-echo "=== Wait briefly for ingestion ==="
-sleep 15
+echo "=== Wait for Filebeat to publish (first events can take 30–90s) ==="
+sleep 45
 
 echo "=== Filebeat indices ==="
 curl -fsS "http://127.0.0.1:9200/_cat/indices/filebeat*?v"
@@ -13,7 +13,10 @@ DOC_COUNT="$(printf "%s" "${COUNT_JSON}" | python3 -c 'import json,sys; print(js
 echo "Ingested filebeat docs: ${DOC_COUNT}"
 
 if [[ "${DOC_COUNT}" -le 0 ]]; then
-  echo "No documents found. Check Filebeat and module configuration."
+  echo "No documents found yet."
+  echo "Common fix on Ubuntu: the filebeat user cannot read files under /var/log/apache2 (directory was 750)."
+  echo "Run: bash ingest/04_fix_zero_documents.sh"
+  echo "Then re-run this script, or check: sudo journalctl -u filebeat -n 60 --no-pager"
   exit 2
 fi
 

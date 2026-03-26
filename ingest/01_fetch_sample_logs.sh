@@ -39,10 +39,23 @@ PY
 
 echo "=== Place logs into Apache default paths for Filebeat module ==="
 sudo mkdir -p /var/log/apache2
+# Ubuntu often uses drwxr-x--- root:adm here; the filebeat user must be able to
+# traverse this directory or it will harvest zero lines (index stays empty).
+sudo chmod 0755 /var/log/apache2
 sudo cp "${WORK_DIR}/access.log" /var/log/apache2/access.log
 sudo cp "${WORK_DIR}/error.log" /var/log/apache2/error.log
 sudo chmod 0644 /var/log/apache2/access.log /var/log/apache2/error.log
 
+# Official packages run Filebeat as user "filebeat"; adm membership is the usual fix.
+if id filebeat >/dev/null 2>&1; then
+  sudo usermod -aG adm filebeat || true
+fi
+
 echo "Access log lines: $(wc -l < "${WORK_DIR}/access.log")"
 echo "Error log lines : $(wc -l < "${WORK_DIR}/error.log")"
 echo "Logs are ready at /var/log/apache2/access.log and /var/log/apache2/error.log"
+
+if systemctl is-active --quiet filebeat 2>/dev/null; then
+  echo "=== Restart Filebeat so harvesters pick up log paths (important) ==="
+  sudo systemctl restart filebeat
+fi
