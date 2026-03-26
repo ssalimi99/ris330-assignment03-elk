@@ -43,6 +43,23 @@ sudo systemctl restart logstash
 sudo systemctl restart kibana
 sudo systemctl restart filebeat
 
+echo "=== Wait for Kibana HTTP (often 30–120s after first start) ==="
+KIBANA_OK=0
+for i in $(seq 1 24); do
+  if curl -fsS http://127.0.0.1:5601/api/status >/dev/null 2>&1; then
+    KIBANA_OK=1
+    echo "Kibana answered on 5601 after ${i} attempt(s) (~$((i * 5))s)."
+    break
+  fi
+  echo "  ... still waiting for Kibana (attempt ${i}/24, sleep 5s)"
+  sleep 5
+done
+if [[ "${KIBANA_OK}" -ne 1 ]]; then
+  echo "WARNING: Kibana did not respond on http://127.0.0.1:5601 yet."
+  echo "Check: sudo journalctl -u kibana -n 80 --no-pager"
+  echo "Then wait and retry: curl -sS http://127.0.0.1:5601/api/status | head"
+fi
+
 echo "=== Verify service status ==="
 for service in elasticsearch logstash kibana filebeat; do
   if sudo systemctl is-active --quiet "${service}"; then
@@ -56,6 +73,10 @@ done
 
 echo "=== Verify local endpoints ==="
 curl -fsS http://127.0.0.1:9200 >/dev/null && echo "Elasticsearch endpoint: OK"
-curl -fsS http://127.0.0.1:5601/api/status >/dev/null && echo "Kibana endpoint: OK"
+if curl -fsS http://127.0.0.1:5601/api/status >/dev/null 2>&1; then
+  echo "Kibana endpoint: OK"
+else
+  echo "Kibana endpoint: not ready in final check (open in browser after ~1 min or see journalctl above)."
+fi
 
 echo "ELK 7.x installation and baseline configuration completed."
